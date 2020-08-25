@@ -13,6 +13,7 @@ DOWN_TIME = 58
 LEFT_OUTPUT = 'DP-2'
 RIGHT_OUTPUT = 'HDMI-0'
 
+
 def capture_frame(path):
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
@@ -36,18 +37,15 @@ def main():
                                                       'will be a date time stamp')
     flags = parser.parse_args()
 
-    warning_time = 3
-    down_time = 58
     focus_left = random.choice([True, False])
-
     while True:
-        notification(f"Capture in {warning_time} seconds. Look "
+        notification(f"Capture in {WARNING_TIME} seconds. Look "
                      f"{'LEFT' if focus_left else 'RIGHT'}")
-        time.sleep(warning_time)
+        time.sleep(WARNING_TIME)
         capture_frame(make_file_path(flags.dest, 'L' if focus_left else 'R'))
         focus_left = not focus_left
 
-        time.sleep(down_time)
+        time.sleep(DOWN_TIME)
 
 
 if __name__ == '__main__':
