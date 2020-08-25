@@ -8,6 +8,10 @@ import random
 import cv2
 from notify import notification
 
+WARNING_TIME = 3
+DOWN_TIME = 58
+LEFT_OUTPUT = 'DP-2'
+RIGHT_OUTPUT = 'HDMI-0'
 
 def capture_frame(path):
     cap = cv2.VideoCapture(0)
